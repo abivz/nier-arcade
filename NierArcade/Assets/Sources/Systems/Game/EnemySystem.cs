@@ -27,14 +27,14 @@ public class EnemySystem : IExecuteSystem
             if ( ! enemyEntity.hasView)
                 continue;
 
-            var enemyEntityView = enemyEntity.view.Value;
+            var enemyEntityView = enemyEntity.view.View;
 
             GameEntity player = null;
             float distance = 100f;
 
             foreach (var playerEntity in _playerComponents.GetEntities(_playerBuffer))
             {
-                var playerEntityView = playerEntity.view.Value;
+                var playerEntityView = playerEntity.view.View;
 
                 var d = Vector3.Distance(enemyEntityView.GetPosition(), playerEntityView.GetPosition());
                 if (d < distance)
@@ -51,20 +51,21 @@ public class EnemySystem : IExecuteSystem
             if (enemyEntity.hasMove)
             {
                 var move = enemyEntity.move;
-                enemyEntity.ReplaceMove(move.MoveType, (player.view.Value.GetPosition() - enemyEntityView.GetPosition()).normalized, move.Speed);
+                var direction = (player.view.View.GetPosition() - enemyEntityView.GetPosition()).normalized;
+                enemyEntity.ReplaceMove(direction.x, direction.y, 0f, move.Speed);
             }
 
-            if (enemyEntity.hasRotation)
-            {
-                var playerPosition = player.view.Value.GetPosition();
-                var enemyPosition = enemyEntity.view.Value.GetPosition();
+            // if (enemyEntity.hasRotation)
+            // {
+            //     var playerPosition = player.view.View.GetPosition();
+            //     var enemyPosition = enemyEntity.view.View.GetPosition();
 
-                var dx = playerPosition.x - enemyPosition.x;
-                var dy = playerPosition.y - enemyPosition.y;
-                var angle = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg - 90;
+            //     var dx = playerPosition.x - enemyPosition.x;
+            //     var dy = playerPosition.y - enemyPosition.y;
+            //     var angle = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg - 90;
 
-                enemyEntity.ReplaceRotation(Mathf.Lerp(enemyEntity.rotation.Angle, angle, 3f * Time.deltaTime));
-            }
+            //     enemyEntity.ReplaceRotation(Mathf.Lerp(enemyEntity.rotation.Angle, angle, 3f * Time.deltaTime));
+            // }
         }
     }
 }

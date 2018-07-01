@@ -1,12 +1,11 @@
-﻿using UnityEngine;
-
-using Entitas;
+﻿using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-[Game]
+[Game, Event(EventTarget.Self)]
 public sealed class MoveComponent : IComponent
 {
-    public MoveType MoveType;
-    public Vector3 Direction;
+    public float X;
+    public float Y;
+    public float Z;
     public float Speed;
 }

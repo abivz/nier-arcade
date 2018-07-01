@@ -7,9 +7,7 @@ using Entitas;
 public class ViewService : MonoBehaviour, IViewService, IService
 {
     [SerializeField]
-    int _prefabCapacity = 10;
-
-    GameContext _gameContext;
+    int _prefabsCapacity = 10;
 
     Dictionary<string, GameObject> _prefabs;
 
@@ -25,25 +23,29 @@ public class ViewService : MonoBehaviour, IViewService, IService
 
     public void Initialize(Contexts contexts)
     {
-        _gameContext = contexts.game;
-        _prefabs = new Dictionary<string, GameObject>(_prefabCapacity);
+        _prefabs = new Dictionary<string, GameObject>(_prefabsCapacity);
         _instance = this;
     }
 
-    public IView CreateView(IEntity entity, string Name, AssetSource Source)
+    public IView CreateView(string Name, AssetSource Source, IView parent = null)
     {
         if (Source == AssetSource.Resources)
         {
             if ( ! _prefabs.ContainsKey(Name))
                 _prefabs.Add(Name, Resources.Load<GameObject>(Name));
-
-            var go = Instantiate(_prefabs[Name]);
-            var view = go.GetComponent<IView>();
-
-            view.Link(entity, _gameContext);
-            return view;
         }
 
-        return null;
+        var go = parent == null ? Instantiate(_prefabs[Name]) : Instantiate(_prefabs[Name], parent.GetGameObject().transform);
+        var view = go.GetComponent<IView>();
+
+        return view;
+    }
+
+    public IView CreateViewAndLink(IEntity entity, IContext context, string Name, AssetSource Source, IView parent = null)
+    {
+        var view = CreateView(Name, Source, parent);
+
+        view.Link(entity, context);
+        return view;
     }
 }

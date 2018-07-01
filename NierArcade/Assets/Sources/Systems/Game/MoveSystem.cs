@@ -19,24 +19,16 @@ public class MoveSystem : IExecuteSystem
     {
         foreach (var e in _moveComponents.GetEntities(_buffer))
         {
-            if (e.hasPool)
-                if ( ! e.pool.Active)
-                    continue;
+            if ( ! e.hasView)
+                continue;
+
+            var view = e.view.View;
+            if ( ! view.GetGameObject().activeSelf)
+                continue;
 
             var move = e.move;
-
-            if (move.MoveType == MoveType.Position)
-            {
-                var position = e.position.Value;
-
-                var vector = move.Direction * move.Speed * Time.deltaTime;
-                e.ReplacePosition(position + vector);
-            }
-            else if (move.MoveType == MoveType.Velocity)
-            {
-                var vector = move.Direction * move.Speed;
-                e.ReplaceVelocity(vector);
-            }
+            var rb2d = view.GetRigidbody2D();
+            rb2d.velocity = new Vector2(move.X, move.Y) * move.Speed;
         }
     }
 }

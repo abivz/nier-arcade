@@ -13,15 +13,16 @@ using Entitas;
 public class GameMoveComponentMonoBehaviour : BaseComponentMonoBehaviour
 {
                 
-    public MoveType MoveType;
-	public UnityEngine.Vector3 Direction;
+    public float X;
+	public float Y;
+	public float Z;
 	public float Speed;
     
     public override int Index
     {
         get
         {
-            return 6;
+            return 10;
         }
     }
 
@@ -31,8 +32,9 @@ public class GameMoveComponentMonoBehaviour : BaseComponentMonoBehaviour
         { 
             return new MoveComponent
             {
-                MoveType = MoveType,
-				Direction = Direction,
+                X = X,
+				Y = Y,
+				Z = Z,
 				Speed = Speed
             }; 
         }

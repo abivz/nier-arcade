@@ -14,13 +14,14 @@ public class GameWeaponComponentMonoBehaviour : BaseComponentMonoBehaviour
 {
                 
     public bool Active;
+	public float IntervalInS;
 	public Gun[] Guns;
     
     public override int Index
     {
         get
         {
-            return 21;
+            return 18;
         }
     }
 
@@ -31,6 +32,7 @@ public class GameWeaponComponentMonoBehaviour : BaseComponentMonoBehaviour
             return new WeaponComponent
             {
                 Active = Active,
+				IntervalInS = IntervalInS,
 				Guns = Guns
             }; 
         }

@@ -42,7 +42,7 @@ public class WeaponSystem : IInitializeSystem, IExecuteSystem
             for (int i = 0; i < setup.Count; i++)
             {
                 var entity = _gameContext.CreateEntity();
-                entity.AddView(ViewService.sharedInstance.CreateView(entity, setup.Name, setup.Source));
+                entity.AddView(ViewService.sharedInstance.CreateViewAndLink(entity, _gameContext, setup.Name, setup.Source));
             }
         }
     }
@@ -51,7 +51,7 @@ public class WeaponSystem : IInitializeSystem, IExecuteSystem
     {
         foreach (var weaponEntity in _weaponComponents.GetEntities(_weaponBuffer))
         {
-            var weaponEntityView = weaponEntity.view.Value;
+            var weaponEntityView = weaponEntity.view.View;
             var weapon = weaponEntity.weapon;
             if ( ! weapon.Active)
                 continue;
@@ -104,7 +104,7 @@ public class WeaponSystem : IInitializeSystem, IExecuteSystem
                 var poolSetup = GetPoolSetupById(_setups, gun.PoolId);
 
                 var poolEntity = _gameContext.CreateEntity();
-                poolEntity.AddView(ViewService.sharedInstance.CreateView(poolEntity, poolSetup.Name, poolSetup.Source));
+                poolEntity.AddView(ViewService.sharedInstance.CreateViewAndLink(poolEntity, _gameContext, poolSetup.Name, poolSetup.Source));
 
                 Shoot(gun, weaponEntity, poolEntity);
                 gun.SetLastShootTime(timeInS);
@@ -146,27 +146,16 @@ public class WeaponSystem : IInitializeSystem, IExecuteSystem
 
     void Shoot(Gun gun, GameEntity weaponEntity, GameEntity poolEntity)
     {
-        var vector = Quaternion.AngleAxis(weaponEntity.rotation.Angle - 90, Vector3.forward) * gun.Direction;
+        var weaponEntityView = weaponEntity.view.View;
+        var poolEntityView = poolEntity.view.View;
+
+        var vector = weaponEntityView.GetRotation() * gun.Direction;
         var direction = new Vector2(vector.x, vector.y).normalized;
 
-        if (poolEntity.hasPosition)
-        {
-            poolEntity.ReplacePosition(weaponEntity.view.Value.GetPosition());
-        }
+        poolEntityView.GetGameObject().SetActive(true);
 
-        if (poolEntity.hasRotation)
-        {
-            poolEntity.ReplaceRotation(direction.GetAngleDeg());
-        }
-
-        if (poolEntity.hasVelocity)
-        {
-            poolEntity.ReplaceVelocity(direction * gun.Speed);
-        }
-
-        // if (poolEntity.hasMove)
-        // {
-        //     poolEntity.ReplaceMove(poolEntity.move.MoveType, direction, gun.Speed);
-        // }
+        poolEntityView.SetPosition(weaponEntityView.GetPosition());
+        poolEntityView.SetRotation(weaponEntityView.GetRotation());
+        poolEntityView.GetRigidbody2D().velocity = direction * gun.Speed;
     }
 }

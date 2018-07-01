@@ -27,8 +27,8 @@ public class WaveSystem : IExecuteSystem
 
             if (val >= wave.Radius)
                 e.isDestroyed = true;
-            else if (e.hasScale)
-                e.ReplaceScale(Vector3.one * val);
+            // else if (e.hasScale)
+            //     e.ReplaceScale(Vector3.one * val);
         }
     }
 }

@@ -19,7 +19,7 @@ public class GameDestroyedComponentMonoBehaviour : BaseComponentMonoBehaviour
     {
         get
         {
-            return 1;
+            return 2;
         }
     }
 

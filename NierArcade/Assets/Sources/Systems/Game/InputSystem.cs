@@ -6,41 +6,39 @@ using Entitas;
 
 public class InputSystem : IInitializeSystem, IExecuteSystem
 {
-    readonly InputContext _inputContext;
+    readonly GameContext _gameContext;
     readonly IGroup<GameEntity> _interactiveComponents;
     readonly List<GameEntity> _buffer;
 
     public InputSystem(Contexts contexts, int bufferCapacity)
     {
-        _inputContext = contexts.input;
-        _interactiveComponents = contexts.game.GetGroup(GameMatcher.Interactive);
+        _gameContext = contexts.game;
+        _interactiveComponents = _gameContext.GetGroup(GameMatcher.Interactive);
         _buffer = new List<GameEntity>(bufferCapacity);
     }
 
     public void Initialize()
     {
-        _inputContext.SetInput(0f, 0f, 0f, 0f, false);
+        _gameContext.SetInput(0f, 0f, 0f, 0f, false);
     }
 
     public void Execute()
     {
         foreach (var e in _interactiveComponents.GetEntities(_buffer))
         {
-            var input = _inputContext.inputEntity.input;
+            var input = _gameContext.inputEntity.input;
+            var view = e.view.View;
+
+            if (input.RotationHorizontal != 0.0f || input.RotationVertical != 0.0f)
+            {
+                var direction = new Vector2(input.RotationHorizontal, input.RotationVertical).normalized;
+                view.SetRotation(Quaternion.AngleAxis(direction.GetAngleDeg() - 90, Vector3.forward));
+            }
 
             if (e.hasMove)
             {
                 var move = e.move;
-                e.ReplaceMove(move.MoveType, new Vector2(input.MoveHorizontal, input.MoveVertical), move.Speed);
-            }
-
-            if (e.hasRotation)
-            {
-                if (input.RotationHorizontal != 0.0f || input.RotationVertical != 0.0f)
-                {
-                    var direction = new Vector2(input.RotationHorizontal, input.RotationVertical).normalized;
-                    e.ReplaceRotation(direction.GetAngleDeg());
-                }
+                e.ReplaceMove(input.MoveHorizontal, input.MoveVertical, 0f, move.Speed);
             }
 
             if (e.hasWeapon)

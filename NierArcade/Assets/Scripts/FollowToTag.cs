@@ -3,7 +3,7 @@
 public class FollowToTag : CachedMonoBehaviour
 {
 	[SerializeField]
-	ArcadeGameObjectTags _tag;
+	GameObjectTag _tag;
 
 	[SerializeField]
 	FollowType _followType;

@@ -9,77 +9,71 @@
 public static class GameComponentsLookup {
 
     public const int Collision = 0;
-    public const int Destroyed = 1;
-    public const int Enemy = 2;
-    public const int Health = 3;
-    public const int HealthListener = 4;
-    public const int Interactive = 5;
-    public const int Move = 6;
-    public const int Player = 7;
-    public const int Pool = 8;
-    public const int PoolListener = 9;
-    public const int Position = 10;
-    public const int PositionListener = 11;
-    public const int Rotation = 12;
-    public const int RotationListener = 13;
-    public const int Scale = 14;
-    public const int ScaleListener = 15;
-    public const int Velocity = 16;
-    public const int VelocityListener = 17;
-    public const int View = 18;
-    public const int Wave = 19;
-    public const int WaveListener = 20;
-    public const int Weapon = 21;
+    public const int Core = 1;
+    public const int Destroyed = 2;
+    public const int DestroyedListener = 3;
+    public const int Enemy = 4;
+    public const int Health = 5;
+    public const int HealthListener = 6;
+    public const int Input = 7;
+    public const int InputListener = 8;
+    public const int Interactive = 9;
+    public const int Move = 10;
+    public const int MoveListener = 11;
+    public const int Player = 12;
+    public const int Pool = 13;
+    public const int Shield = 14;
+    public const int View = 15;
+    public const int Wave = 16;
+    public const int WaveListener = 17;
+    public const int Weapon = 18;
+    public const int WeaponListener = 19;
 
-    public const int TotalComponents = 22;
+    public const int TotalComponents = 20;
 
     public static readonly string[] componentNames = {
         "Collision",
+        "Core",
         "Destroyed",
+        "DestroyedListener",
         "Enemy",
         "Health",
         "HealthListener",
+        "Input",
+        "InputListener",
         "Interactive",
         "Move",
+        "MoveListener",
         "Player",
         "Pool",
-        "PoolListener",
-        "Position",
-        "PositionListener",
-        "Rotation",
-        "RotationListener",
-        "Scale",
-        "ScaleListener",
-        "Velocity",
-        "VelocityListener",
+        "Shield",
         "View",
         "Wave",
         "WaveListener",
-        "Weapon"
+        "Weapon",
+        "WeaponListener"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(CollisionComponent),
+        typeof(CoreComponent),
         typeof(DestroyedComponent),
+        typeof(DestroyedListenerComponent),
         typeof(EnemyComponent),
         typeof(HealthComponent),
         typeof(HealthListenerComponent),
+        typeof(InputComponent),
+        typeof(InputListenerComponent),
         typeof(InteractiveComponent),
         typeof(MoveComponent),
+        typeof(MoveListenerComponent),
         typeof(PlayerComponent),
         typeof(PoolComponent),
-        typeof(PoolListenerComponent),
-        typeof(PositionComponent),
-        typeof(PositionListenerComponent),
-        typeof(RotationComponent),
-        typeof(RotationListenerComponent),
-        typeof(ScaleComponent),
-        typeof(ScaleListenerComponent),
-        typeof(VelocityComponent),
-        typeof(VelocityListenerComponent),
+        typeof(ShieldComponent),
         typeof(ViewComponent),
         typeof(WaveComponent),
         typeof(WaveListenerComponent),
-        typeof(WeaponComponent)
+        typeof(WeaponComponent),
+        typeof(WeaponListenerComponent)
     };
 }

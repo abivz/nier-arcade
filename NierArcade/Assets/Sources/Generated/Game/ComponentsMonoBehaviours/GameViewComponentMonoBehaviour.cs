@@ -13,13 +13,13 @@ using Entitas;
 public class GameViewComponentMonoBehaviour : BaseComponentMonoBehaviour
 {
                 
-    public IView Value;
+    public IView View;
     
     public override int Index
     {
         get
         {
-            return 18;
+            return 15;
         }
     }
 
@@ -29,7 +29,7 @@ public class GameViewComponentMonoBehaviour : BaseComponentMonoBehaviour
         { 
             return new ViewComponent
             {
-                Value = Value
+                View = View
             }; 
         }
     }

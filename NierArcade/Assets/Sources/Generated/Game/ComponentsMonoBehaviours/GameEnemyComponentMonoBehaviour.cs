@@ -19,7 +19,7 @@ public class GameEnemyComponentMonoBehaviour : BaseComponentMonoBehaviour
     {
         get
         {
-            return 2;
+            return 4;
         }
     }
 

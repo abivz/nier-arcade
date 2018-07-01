@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-[Input, Unique, Event(EventTarget.Self, priority: 1)]
+[Game, Unique, Event(EventTarget.Any)]
 public sealed class InputComponent : IComponent
 {
     public float MoveHorizontal;

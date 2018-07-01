@@ -41,7 +41,7 @@ public class InputController : MonoBehaviour
                            float RotationHorizontal = 0f, float RotationVertical = 0f,
                            bool Fire = false)
     {
-        _contexts.input.ReplaceInput(MoveHorizontal, MoveVertical,
+        _contexts.game.ReplaceInput(MoveHorizontal, MoveVertical,
                                      RotationHorizontal, RotationVertical,
                                      Fire);
     }

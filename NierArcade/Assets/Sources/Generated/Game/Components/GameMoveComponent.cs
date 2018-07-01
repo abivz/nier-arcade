@@ -11,20 +11,22 @@ public partial class GameEntity {
     public MoveComponent move { get { return (MoveComponent)GetComponent(GameComponentsLookup.Move); } }
     public bool hasMove { get { return HasComponent(GameComponentsLookup.Move); } }
 
-    public void AddMove(MoveType newMoveType, UnityEngine.Vector3 newDirection, float newSpeed) {
+    public void AddMove(float newX, float newY, float newZ, float newSpeed) {
         var index = GameComponentsLookup.Move;
         var component = CreateComponent<MoveComponent>(index);
-        component.MoveType = newMoveType;
-        component.Direction = newDirection;
+        component.X = newX;
+        component.Y = newY;
+        component.Z = newZ;
         component.Speed = newSpeed;
         AddComponent(index, component);
     }
 
-    public void ReplaceMove(MoveType newMoveType, UnityEngine.Vector3 newDirection, float newSpeed) {
+    public void ReplaceMove(float newX, float newY, float newZ, float newSpeed) {
         var index = GameComponentsLookup.Move;
         var component = CreateComponent<MoveComponent>(index);
-        component.MoveType = newMoveType;
-        component.Direction = newDirection;
+        component.X = newX;
+        component.Y = newY;
+        component.Z = newZ;
         component.Speed = newSpeed;
         ReplaceComponent(index, component);
     }

@@ -20,7 +20,7 @@ public class DestroyedSystem : ICleanupSystem
         foreach (var e in _destroyedComponents.GetEntities(_buffer))
         {
             if (e.hasView)
-                Object.Destroy(e.view.Value.GetGameObject());
+                Object.Destroy(e.view.View.GetGameObject());
             
             e.Destroy();
         }

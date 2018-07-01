@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using Entitas;
+using Entitas.CodeGeneration.Attributes;
 
-using Entitas;
-
-[Game]
+[Game, Event(EventTarget.Self)]
 public sealed class WeaponComponent : IComponent
 {
     public bool Active;
+    public float IntervalInS;
     public Gun[] Guns;
 }

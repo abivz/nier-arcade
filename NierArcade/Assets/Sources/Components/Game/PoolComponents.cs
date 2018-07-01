@@ -1,7 +1,7 @@
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-[Game, Event(EventTarget.Self, priority: 1)]
+[Game]
 public sealed class PoolComponent : IComponent
 {
     public int Id;

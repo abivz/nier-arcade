@@ -13,13 +13,13 @@ using Entitas;
 public class GameHealthComponentMonoBehaviour : BaseComponentMonoBehaviour
 {
                 
-    public float Value;
+    public float Health;
     
     public override int Index
     {
         get
         {
-            return 3;
+            return 5;
         }
     }
 
@@ -29,7 +29,7 @@ public class GameHealthComponentMonoBehaviour : BaseComponentMonoBehaviour
         { 
             return new HealthComponent
             {
-                Value = Value
+                Health = Health
             }; 
         }
     }

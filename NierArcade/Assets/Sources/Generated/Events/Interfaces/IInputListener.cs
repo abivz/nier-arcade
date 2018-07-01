@@ -7,5 +7,5 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 public interface IInputListener {
-    void OnInput(InputEntity entity, float MoveHorizontal, float MoveVertical, float RotationHorizontal, float RotationVertical, bool Fire);
+    void OnInput(GameEntity entity, float MoveHorizontal, float MoveVertical, float RotationHorizontal, float RotationVertical, bool Fire);
 }

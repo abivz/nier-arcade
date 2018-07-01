@@ -3,7 +3,7 @@
 public class OnCollisionSetMaterial : MonoBehaviour
 {
 	[SerializeField]
-	ArcadeGameObjectTags _tag;
+	GameObjectTag _tag;
 
 	[SerializeField]
 	GameObject _gameObjectWithRenderer;

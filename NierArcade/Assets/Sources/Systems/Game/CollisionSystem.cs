@@ -33,25 +33,20 @@ public class CollisionSystem : ReactiveSystem<GameEntity>, ICleanupSystem
         {
             var collision = e.collision;
 
-            if (collision.Entity.hasPool)
-                collision.Entity.ReplacePool(collision.Entity.pool.Id, false);
+            if (collision.Entity == null)
+                continue;
 
-            
-            if (collision.Tag.Equals(ArcadeGameObjectTags.Bullet.ToString()))
+            var view = collision.Entity.view.View;
+
+            if (collision.Entity.hasPool)
             {
-                if (collision.Entity.hasHealth)
-                {
-                    collision.Entity.ReplaceHealth(collision.Entity.health.Value - 1);
-                    // if (collision.Entity.isPlayer)
-                    // {
-                    //     var wave = _contexts.game.CreateEntity();
-                    //     wave.AddAsset("PlayerWave", AssetSource.Resources);
-                    //     wave.AddPosition(collision.Entity.view.Value.GetPosition());
-                    //     wave.AddScale(Vector3.one / 2f);
-                    //     wave.AddWave(0.5f, 5f, 12f);
-                    // }
-                }
+                view.GetGameObject().SetActive(false);
+                collision.Entity.ReplacePool(collision.Entity.pool.Id, false);
             }
+
+            if (collision.Tag == GameObjectTag.Tag_Bullet)
+                if (collision.Entity.hasHealth && ! collision.Entity.hasShield)
+                    collision.Entity.ReplaceHealth(collision.Entity.health.Health - 1);
         }
     }
 

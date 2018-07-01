@@ -52,10 +52,9 @@ GameObject:
   - component: {fileID: 4309805683264790}
   - component: {fileID: 50253562920267818}
   - component: {fileID: 58516860105374542}
-  - component: {fileID: 114784310625709946}
-  - component: {fileID: 114982345953840686}
-  - component: {fileID: 114543149950749416}
-  - component: {fileID: 114195773209995250}
+  - component: {fileID: 114032676910891594}
+  - component: {fileID: 114082273119052030}
+  - component: {fileID: 114447791942578522}
   - component: {fileID: 114028194347544060}
   - component: {fileID: 114237175365976354}
   - component: {fileID: 114258488192318106}
@@ -241,10 +240,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af1d2ea9c0c2c4e4bb61800076672f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveType: 1
-  Direction: {x: 0, y: 0, z: 0}
+  X: 0
+  Y: 0
+  Z: 0
   Speed: 0.5
---- !u!114 &114195773209995250
+--- !u!114 &114032676910891594
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -252,10 +252,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1368331035670736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbffdfed8cd97b9489c2f0efaf4ba99b, type: 3}
+  m_Script: {fileID: 11500000, guid: 40ed03342e4bd2043a3c43ea707c11c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Angle: 0
+  _selfInstance: 0
+  _rotationTransform: {fileID: 0}
+  _positionTransform: {fileID: 0}
+--- !u!114 &114082273119052030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368331035670736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f03cba6d12db48449a0a8338bfcd84c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114237175365976354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7651d3a8bc5260c4c8fd8b3de9581413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 10
+  Health: 10
 --- !u!114 &114258488192318106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Active: 1
+  IntervalInS: 0
   Guns:
   - PoolId: 2
     Active: 1
@@ -301,7 +315,7 @@ MonoBehaviour:
     IntervalInS: 0.25
     Speed: 5
     Direction: {x: -0.1, y: 0}
---- !u!114 &114543149950749416
+--- !u!114 &114447791942578522
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -309,10 +323,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1368331035670736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599f0d203dbfb814e9977439ddb67520, type: 3}
+  m_Script: {fileID: 11500000, guid: a28ec8db558e0824584c119ea736dcc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: {x: 0, y: 0, z: 0}
+  Name: CoreShield
+  Source: 0
 --- !u!114 &114635387549008358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,38 +339,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3ac96274570df49be9b525e1f5e1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tag: 6
+  _tag:
+    Value: 7
   _gameObjectWithRenderer: {fileID: 1319928531809914}
   _material: {fileID: 2100000, guid: 93092fb4fe76ece47a09c7e2ebaedfb0, type: 2}
   _duration: 0.05
---- !u!114 &114784310625709946
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1368331035670736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28dd95e605af9492c823db961f5b18ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selfInstance: 0
-  _rotationAxis: 1
-  _inverseAxis: 0
-  _isLocalRotation: 1
-  _rotationCorrection: 0
-  _rotationTransform: {fileID: 4869105252826518}
---- !u!114 &114982345953840686
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1368331035670736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7c60b3114d0cfb42a37c20c250e6500, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!137 &137010754416686122
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

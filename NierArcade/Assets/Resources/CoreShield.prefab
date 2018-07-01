@@ -38,9 +38,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4075707864208042}
   - component: {fileID: 58709802839589686}
+  - component: {fileID: 114747567677162064}
   m_Layer: 16
   m_Name: CoreShield
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +129,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.55
 --- !u!114 &114701646202565938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,3 +142,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.15
+--- !u!114 &114747567677162064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1851914669974330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ed03342e4bd2043a3c43ea707c11c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selfInstance: 0
+  _rotationTransform: {fileID: 0}
+  _positionTransform: {fileID: 0}

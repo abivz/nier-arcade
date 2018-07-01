@@ -9,12 +9,11 @@
 public sealed class GameEventSystems : Feature {
 
     public GameEventSystems(Contexts contexts) {
-        Add(new PositionEventSystem(contexts)); // priority: 0
-        Add(new HealthEventSystem(contexts)); // priority: 1
-        Add(new PoolEventSystem(contexts)); // priority: 1
-        Add(new RotationEventSystem(contexts)); // priority: 1
-        Add(new ScaleEventSystem(contexts)); // priority: 1
-        Add(new VelocityEventSystem(contexts)); // priority: 1
-        Add(new WaveEventSystem(contexts)); // priority: 1
+        Add(new DestroyedEventSystem(contexts)); // priority: 0
+        Add(new HealthEventSystem(contexts)); // priority: 0
+        Add(new InputEventSystem(contexts)); // priority: 0
+        Add(new MoveEventSystem(contexts)); // priority: 0
+        Add(new WaveEventSystem(contexts)); // priority: 0
+        Add(new WeaponEventSystem(contexts)); // priority: 0
     }
 }

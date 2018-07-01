@@ -3,5 +3,5 @@
 [Game]
 public sealed class ViewComponent : IComponent
 {
-    public IView Value;
+    public IView View;
 }

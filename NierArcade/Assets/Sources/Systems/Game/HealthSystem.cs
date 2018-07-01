@@ -16,7 +16,7 @@ public class HealthSystem : IExecuteSystem
     public void Execute()
     {
         foreach (var e in _healthComponents.GetEntities(_buffer))
-            if (e.health.Value <= 0.0f)
+            if (e.health.Health <= 0.0f)
                 e.isDestroyed = true;
     }
 }
