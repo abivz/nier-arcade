@@ -30,7 +30,7 @@ public sealed class WaveEventSystem : Entitas.ReactiveSystem<GameEntity> {
             _listenerBuffer.Clear();
             _listenerBuffer.AddRange(e.waveListener.value);
             foreach (var listener in _listenerBuffer) {
-                listener.OnWave(e, component.Value, component.Radius, component.Speed);
+                listener.OnWave(e, component.Radius, component.Speed);
             }
         }
     }

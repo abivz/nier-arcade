@@ -19,16 +19,18 @@ public class WaveSystem : IExecuteSystem
     {
         foreach (var e in _waveComponents.GetEntities(_buffer))
         {
+            if ( ! e.hasView)
+                continue;
+            
             var wave = e.wave;
+            var view = e.view.View;
 
-            var val = wave.Value + wave.Speed * Time.deltaTime;
+            var scale = view.GetGameObject().transform.localScale.x * wave.Speed * Time.deltaTime;
 
-            e.ReplaceWave(val, wave.Radius, wave.Speed);
-
-            if (val >= wave.Radius)
+            if (scale >= wave.Radius)
                 e.isDestroyed = true;
-            // else if (e.hasScale)
-            //     e.ReplaceScale(Vector3.one * val);
+            else
+                view.GetGameObject().transform.localScale += new Vector3(scale, scale);
         }
     }
 }

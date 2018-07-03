@@ -13,8 +13,7 @@ using Entitas;
 public class GameWaveComponentMonoBehaviour : BaseComponentMonoBehaviour
 {
                 
-    public float Value;
-	public float Radius;
+    public float Radius;
 	public float Speed;
     
     public override int Index
@@ -31,8 +30,7 @@ public class GameWaveComponentMonoBehaviour : BaseComponentMonoBehaviour
         { 
             return new WaveComponent
             {
-                Value = Value,
-				Radius = Radius,
+                Radius = Radius,
 				Speed = Speed
             }; 
         }

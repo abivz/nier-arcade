@@ -70,8 +70,8 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TexHeight: 591
-    - _TexWidth: 533
+    - _TexHeight: 0
+    - _TexWidth: 0
     - _UVSec: 0
     - _Value: 0.86
     - _ZWrite: 1

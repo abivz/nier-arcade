@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b786d2717904946d4874af5f146af985, type: 3}
+  m_Name: Level0
+  m_EditorClassIdentifier: 
+  Name: Level Zero
+  MapName: Map
+  MapSource: 1
+  MapBundleName: 
+  MapSizeX: 20
+  MapSizeY: 20
+  DefaultSource: 1
+  BundleName: 
+  Objects:
+  - Name: Player
+    Source: 0
+    BundleName: 
+    PositionX: 0
+    PositionY: 0
+  - Name: Core
+    Source: 0
+    BundleName: 
+    PositionX: 0
+    PositionY: 6
+  - Name: Enemy
+    Source: 0
+    BundleName: 
+    PositionX: 0
+    PositionY: 4
+  - Name: Enemy
+    Source: 0
+    BundleName: 
+    PositionX: -2
+    PositionY: 4
+  - Name: Enemy
+    Source: 0
+    BundleName: 
+    PositionX: 2
+    PositionY: 4

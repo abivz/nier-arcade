@@ -7,5 +7,5 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 public interface IWaveListener {
-    void OnWave(GameEntity entity, float Value, float Radius, float Speed);
+    void OnWave(GameEntity entity, float Radius, float Speed);
 }

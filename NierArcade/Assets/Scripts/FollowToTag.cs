@@ -5,26 +5,32 @@ public class FollowToTag : CachedMonoBehaviour
 	[SerializeField]
 	GameObjectTag _tag;
 
+    [SerializeField]
+    Vector3 _offsetFromTargetGameObject;
+
 	[SerializeField]
 	FollowType _followType;
 
 	[SerializeField]
 	float _timeMultiplier;
-	
-	Transform _targetTransform;
 
-	Vector3 _offsetFromTargetGameObject;
+    Transform _targetTransform;
 
-	void Awake()
+    void Awake()
+    {
+        cachedTransform.position = _offsetFromTargetGameObject;
+    }
+
+    void LateUpdate()
 	{
-		_targetTransform = GameObject.FindGameObjectWithTag(_tag.ToString()).GetComponent<Transform>();
-		_offsetFromTargetGameObject = cachedTransform.position - _targetTransform.position;
-	}
-
-	void LateUpdate()
-	{
-		if (_targetTransform == null)
-			return;
+        if (_targetTransform == null)
+        {
+            var go = GameObject.FindGameObjectWithTag(_tag.ToString());
+            if (go != null)
+                _targetTransform = go.GetComponent<Transform>();
+            
+            return;
+        }
 
 		var playerPosition = _targetTransform.position;
 

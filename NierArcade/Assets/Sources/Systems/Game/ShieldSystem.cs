@@ -31,7 +31,10 @@ public class ShieldSystem : IExecuteSystem
             }
             else
             {
-                shield.SetShieldView(ViewService.sharedInstance.CreateView(shield.Name, shield.Source));
+                var view = ViewService.sharedInstance.CreateView(shield.Name, shield.Source);
+                view.SetPosition(e.view.View.GetPosition());
+                shield.SetShieldView(view);
+
                 e.OnComponentRemoved += ComponentRemoved;
             }
         }

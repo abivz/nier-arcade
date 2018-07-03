@@ -11,19 +11,17 @@ public partial class GameEntity {
     public WaveComponent wave { get { return (WaveComponent)GetComponent(GameComponentsLookup.Wave); } }
     public bool hasWave { get { return HasComponent(GameComponentsLookup.Wave); } }
 
-    public void AddWave(float newValue, float newRadius, float newSpeed) {
+    public void AddWave(float newRadius, float newSpeed) {
         var index = GameComponentsLookup.Wave;
         var component = CreateComponent<WaveComponent>(index);
-        component.Value = newValue;
         component.Radius = newRadius;
         component.Speed = newSpeed;
         AddComponent(index, component);
     }
 
-    public void ReplaceWave(float newValue, float newRadius, float newSpeed) {
+    public void ReplaceWave(float newRadius, float newSpeed) {
         var index = GameComponentsLookup.Wave;
         var component = CreateComponent<WaveComponent>(index);
-        component.Value = newValue;
         component.Radius = newRadius;
         component.Speed = newSpeed;
         ReplaceComponent(index, component);

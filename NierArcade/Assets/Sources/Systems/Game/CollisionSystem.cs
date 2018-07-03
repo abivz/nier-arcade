@@ -1,18 +1,14 @@
 ﻿using System.Collections.Generic;
 
-using UnityEngine;
-
 using Entitas;
 
 public class CollisionSystem : ReactiveSystem<GameEntity>, ICleanupSystem
 {
-    readonly Contexts _contexts;
     readonly IGroup<GameEntity> _collisionComponents;
     readonly List<GameEntity> _buffer;
 
     public CollisionSystem(Contexts contexts, int bufferCapacity) : base(contexts.game)
     {
-        _contexts = contexts;
         _collisionComponents = contexts.game.GetGroup(GameMatcher.Collision);
         _buffer = new List<GameEntity>(bufferCapacity);
     }
@@ -45,8 +41,17 @@ public class CollisionSystem : ReactiveSystem<GameEntity>, ICleanupSystem
             }
 
             if (collision.Tag == GameObjectTag.Tag_Bullet)
-                if (collision.Entity.hasHealth && ! collision.Entity.hasShield)
+            {
+                if (collision.Entity.hasHealth && !collision.Entity.hasShield)
+                {
                     collision.Entity.ReplaceHealth(collision.Entity.health.Health - 1);
+
+                    if (collision.Entity.isPlayer)
+                    {
+                        
+                    }
+                }
+            }
         }
     }
 

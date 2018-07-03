@@ -8,7 +8,6 @@ using Entitas;
 public class WeaponSystem : IInitializeSystem, IExecuteSystem
 {
     readonly GameContext _gameContext;
-    readonly int _poolBufferCapacity;
     readonly PoolSetup[] _setups;
     readonly IGroup<GameEntity> _poolComponents;
     readonly IGroup<GameEntity> _weaponComponents;
@@ -26,7 +25,6 @@ public class WeaponSystem : IInitializeSystem, IExecuteSystem
     public WeaponSystem(Contexts contexts, int weaponBufferCapacity, int poolBufferCapacity, PoolSetup[] setups)
     {
         _gameContext = contexts.game;
-        _poolBufferCapacity = poolBufferCapacity;
         _setups = setups;
 
         _poolComponents = _gameContext.GetGroup(GameMatcher.Pool);
@@ -43,6 +41,7 @@ public class WeaponSystem : IInitializeSystem, IExecuteSystem
             {
                 var entity = _gameContext.CreateEntity();
                 entity.AddView(ViewService.sharedInstance.CreateViewAndLink(entity, _gameContext, setup.Name, setup.Source));
+                entity.AddPool(setup.Id, false);
             }
         }
     }
@@ -51,7 +50,6 @@ public class WeaponSystem : IInitializeSystem, IExecuteSystem
     {
         foreach (var weaponEntity in _weaponComponents.GetEntities(_weaponBuffer))
         {
-            var weaponEntityView = weaponEntity.view.View;
             var weapon = weaponEntity.weapon;
             if ( ! weapon.Active)
                 continue;
@@ -105,6 +103,7 @@ public class WeaponSystem : IInitializeSystem, IExecuteSystem
 
                 var poolEntity = _gameContext.CreateEntity();
                 poolEntity.AddView(ViewService.sharedInstance.CreateViewAndLink(poolEntity, _gameContext, poolSetup.Name, poolSetup.Source));
+                poolEntity.AddPool(poolSetup.Id, false);
 
                 Shoot(gun, weaponEntity, poolEntity);
                 gun.SetLastShootTime(timeInS);

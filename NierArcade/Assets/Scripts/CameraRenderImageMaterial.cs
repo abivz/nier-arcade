@@ -7,8 +7,9 @@ public class CameraRenderImageMaterial : MonoBehaviour
 
 	void OnRenderImage(RenderTexture src, RenderTexture dest)
 	{
-		_material.SetFloat("_TexWidth", src.width);
-		_material.SetFloat("_TexHeight", src.height);
-        Graphics.Blit(src, dest, _material);
+        var mat = new Material(_material);
+        mat.SetFloat("_TexWidth", src.width);
+        mat.SetFloat("_TexHeight", src.height);
+        Graphics.Blit(src, dest, mat);
     }
 }
