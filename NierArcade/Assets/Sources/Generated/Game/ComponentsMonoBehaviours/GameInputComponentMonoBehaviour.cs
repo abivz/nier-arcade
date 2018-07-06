@@ -23,7 +23,7 @@ public class GameInputComponentMonoBehaviour : BaseComponentMonoBehaviour
     {
         get
         {
-            return 7;
+            return 8;
         }
     }
 

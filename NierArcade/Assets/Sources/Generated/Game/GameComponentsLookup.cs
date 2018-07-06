@@ -13,23 +13,26 @@ public static class GameComponentsLookup {
     public const int Destroyed = 2;
     public const int DestroyedListener = 3;
     public const int Enemy = 4;
-    public const int Health = 5;
-    public const int HealthListener = 6;
-    public const int Input = 7;
-    public const int InputListener = 8;
-    public const int Interactive = 9;
-    public const int Move = 10;
-    public const int MoveListener = 11;
-    public const int Player = 12;
-    public const int Pool = 13;
-    public const int Shield = 14;
-    public const int View = 15;
-    public const int Wave = 16;
-    public const int WaveListener = 17;
-    public const int Weapon = 18;
-    public const int WeaponListener = 19;
+    public const int FollowPlayer = 5;
+    public const int Health = 6;
+    public const int HealthListener = 7;
+    public const int Input = 8;
+    public const int InputListener = 9;
+    public const int Interactive = 10;
+    public const int Move = 11;
+    public const int MoveListener = 12;
+    public const int Player = 13;
+    public const int Pool = 14;
+    public const int Rotate = 15;
+    public const int RotateToPlayer = 16;
+    public const int Shield = 17;
+    public const int View = 18;
+    public const int Wave = 19;
+    public const int WaveListener = 20;
+    public const int Weapon = 21;
+    public const int WeaponListener = 22;
 
-    public const int TotalComponents = 20;
+    public const int TotalComponents = 23;
 
     public static readonly string[] componentNames = {
         "Collision",
@@ -37,6 +40,7 @@ public static class GameComponentsLookup {
         "Destroyed",
         "DestroyedListener",
         "Enemy",
+        "FollowPlayer",
         "Health",
         "HealthListener",
         "Input",
@@ -46,6 +50,8 @@ public static class GameComponentsLookup {
         "MoveListener",
         "Player",
         "Pool",
+        "Rotate",
+        "RotateToPlayer",
         "Shield",
         "View",
         "Wave",
@@ -60,6 +66,7 @@ public static class GameComponentsLookup {
         typeof(DestroyedComponent),
         typeof(DestroyedListenerComponent),
         typeof(EnemyComponent),
+        typeof(FollowPlayerComponent),
         typeof(HealthComponent),
         typeof(HealthListenerComponent),
         typeof(InputComponent),
@@ -69,6 +76,8 @@ public static class GameComponentsLookup {
         typeof(MoveListenerComponent),
         typeof(PlayerComponent),
         typeof(PoolComponent),
+        typeof(RotateComponent),
+        typeof(RotateToPlayerComponent),
         typeof(ShieldComponent),
         typeof(ViewComponent),
         typeof(WaveComponent),

@@ -4,14 +4,14 @@ using UnityEngine;
 
 using Entitas;
 
-public class EnemySystem : IExecuteSystem
+public class FollowPlayerSystem : IExecuteSystem
 {
     readonly IGroup<GameEntity> _enemyComponents;
     readonly IGroup<GameEntity> _playerComponents;
     readonly List<GameEntity> _enemyBuffer;
     readonly List<GameEntity> _playerBuffer;
 
-    public EnemySystem(Contexts contexts, int bufferCapacity)
+    public FollowPlayerSystem(Contexts contexts, int bufferCapacity)
     {
         _enemyComponents = contexts.game.GetGroup(GameMatcher.Enemy);
         _enemyBuffer = new List<GameEntity>(bufferCapacity);
@@ -45,14 +45,19 @@ public class EnemySystem : IExecuteSystem
                     
             }
 
-            if (player == null)
-                return;
-
             if (enemyEntity.hasMove)
             {
                 var move = enemyEntity.move;
-                var direction = (player.view.View.GetPosition() - enemyEntityView.GetPosition()).normalized;
-                enemyEntity.ReplaceMove(direction.x, direction.y, 0f, move.Speed);
+
+                if (player != null)
+                {
+                    var direction = (player.view.View.GetPosition() - enemyEntityView.GetPosition()).normalized;
+                    enemyEntity.ReplaceMove(direction.x, direction.y, 0f, move.Speed);
+                }
+                else
+                {
+                    enemyEntity.ReplaceMove(0f, 0f, 0f, move.Speed);
+                }
             }
 
             // if (enemyEntity.hasRotation)

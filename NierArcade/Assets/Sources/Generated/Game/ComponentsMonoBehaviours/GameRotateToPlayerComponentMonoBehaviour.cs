@@ -10,18 +10,16 @@
 using UnityEngine;
 using Entitas;
 
-public class GameWeaponComponentMonoBehaviour : BaseComponentMonoBehaviour
+public class GameRotateToPlayerComponentMonoBehaviour : BaseComponentMonoBehaviour
 {
                 
-    public bool Active;
-	public float IntervalInS;
-	public Gun[] Guns;
+    public float Speed;
     
     public override int Index
     {
         get
         {
-            return 21;
+            return 16;
         }
     }
 
@@ -29,11 +27,9 @@ public class GameWeaponComponentMonoBehaviour : BaseComponentMonoBehaviour
     {
         get 
         { 
-            return new WeaponComponent
+            return new RotateToPlayerComponent
             {
-                Active = Active,
-				IntervalInS = IntervalInS,
-				Guns = Guns
+                Speed = Speed
             }; 
         }
     }

@@ -19,7 +19,7 @@ public class GameHealthListenerComponentMonoBehaviour : BaseComponentMonoBehavio
     {
         get
         {
-            return 6;
+            return 7;
         }
     }
 

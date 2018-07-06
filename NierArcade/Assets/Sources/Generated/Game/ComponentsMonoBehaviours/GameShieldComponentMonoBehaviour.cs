@@ -20,7 +20,7 @@ public class GameShieldComponentMonoBehaviour : BaseComponentMonoBehaviour
     {
         get
         {
-            return 14;
+            return 17;
         }
     }
 

@@ -19,7 +19,7 @@ public class GameWaveListenerComponentMonoBehaviour : BaseComponentMonoBehaviour
     {
         get
         {
-            return 17;
+            return 20;
         }
     }
 

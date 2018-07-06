@@ -19,7 +19,12 @@ public class InputController : MonoBehaviour
     [SerializeField]
     string _axisFire;
 
+    [SerializeField]
+    float _rotationLerpMultiplier = 1f;
+
     Contexts _contexts;
+
+    float _moveHorizontal, _moveVertical, _rotationHorizontal, _rotationVertical;
 
     void Awake()
     {
@@ -28,13 +33,13 @@ public class InputController : MonoBehaviour
 
     void Update()
     {
-        var moveHorizontal  = Input.GetAxis(_axisMoveHorizontal);
-        var moveVertical    = Input.GetAxis(_axisMoveVertical);
-        var rotationHorizontal = Input.GetAxis(_axisRotationHorizontal);
-        var rotationVertical = Input.GetAxis(_axisRotationVertical);
+        _moveHorizontal  = Input.GetAxis(_axisMoveHorizontal);
+        _moveVertical    = Input.GetAxis(_axisMoveVertical);
+        _rotationHorizontal = Mathf.Lerp(_rotationHorizontal, Input.GetAxis(_axisRotationHorizontal), _rotationLerpMultiplier * Time.deltaTime);
+        _rotationVertical = Mathf.Lerp(_rotationVertical, Input.GetAxis(_axisRotationVertical), _rotationLerpMultiplier * Time.deltaTime);
         var fire = Input.GetAxis(_axisFire) >= 1f;
 
-        SetInput(moveHorizontal, moveVertical, rotationHorizontal, rotationVertical, fire);
+        SetInput(_moveHorizontal, _moveVertical, _rotationHorizontal, _rotationVertical, fire);
     }
 
     void SetInput(float MoveHorizontal, float MoveVertical,

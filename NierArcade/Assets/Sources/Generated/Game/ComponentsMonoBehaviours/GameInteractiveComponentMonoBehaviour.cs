@@ -19,7 +19,7 @@ public class GameInteractiveComponentMonoBehaviour : BaseComponentMonoBehaviour
     {
         get
         {
-            return 9;
+            return 10;
         }
     }
 

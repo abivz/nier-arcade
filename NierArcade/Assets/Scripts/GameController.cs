@@ -28,10 +28,12 @@ public class GameController : MonoBehaviour
 
         //  Systems
         _systems = new Systems().Add(new InputSystem(contexts, 10))
-                                         .Add(new EnemySystem(contexts, 10))
+                                .Add(new FollowPlayerSystem(contexts, 10))
                                          .Add(new WeaponSystem(contexts, 10, 100, _poolSetups))
                                          .Add(new WaveSystem(contexts, 10))
                                          .Add(new MoveSystem(contexts, 10))
+                                .Add(new RotateSystem(contexts, 10))
+                                .Add(new RotateToPlayerSystem(contexts, 10))
                                          .Add(new CollisionSystem(contexts, 10))
                                          .Add(new HealthSystem(contexts, 10))
 

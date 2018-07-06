@@ -22,7 +22,7 @@ public class GameMoveComponentMonoBehaviour : BaseComponentMonoBehaviour
     {
         get
         {
-            return 10;
+            return 11;
         }
     }
 

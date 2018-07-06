@@ -20,7 +20,7 @@ public class GamePoolComponentMonoBehaviour : BaseComponentMonoBehaviour
     {
         get
         {
-            return 13;
+            return 14;
         }
     }
 

@@ -19,7 +19,7 @@ public class GameWeaponListenerComponentMonoBehaviour : BaseComponentMonoBehavio
     {
         get
         {
-            return 19;
+            return 22;
         }
     }
 

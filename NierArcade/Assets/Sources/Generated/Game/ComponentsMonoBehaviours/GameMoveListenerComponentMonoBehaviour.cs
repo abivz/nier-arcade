@@ -19,7 +19,7 @@ public class GameMoveListenerComponentMonoBehaviour : BaseComponentMonoBehaviour
     {
         get
         {
-            return 11;
+            return 12;
         }
     }
 

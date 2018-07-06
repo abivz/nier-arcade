@@ -19,7 +19,7 @@ public class GameHealthComponentMonoBehaviour : BaseComponentMonoBehaviour
     {
         get
         {
-            return 5;
+            return 6;
         }
     }
 
