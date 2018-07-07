@@ -31,7 +31,7 @@ public class InputSystem : IInitializeSystem, IExecuteSystem
 
             if (input.RotationHorizontal != 0.0f || input.RotationVertical != 0.0f)
             {
-                var direction = new Vector2(input.RotationHorizontal, input.RotationVertical).normalized;
+                var direction = new Vector2(input.RotationHorizontal, input.RotationVertical);
                 view.SetRotation(Quaternion.AngleAxis(direction.GetAngleDeg() - 90, Vector3.forward));
             }
 
